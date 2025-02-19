@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>ALAFARPE</title>
+    <link rel="icon" type="image/x-icon"
+        href="https://img.icons8.com/?size=100&id=2iqtBBWKdEbR&format=png&color=000000" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="assets/mp4/bg.mp4" type="video/mp4" />
+    </video>
+    <div class="masthead">
+        <div class="masthead-content text-white">
+            <div class="container-fluid px-4 px-lg-0">
+                <h1 class="fst-italic lh-1 mb-4">¡Descubre oportunidades en ALAFARPE!</h1>
+                <p class="mb-5">Regístrate ahora y accede a las últimas vacantes en el sector farmacéutico.</p>
+
+                <div id="auth-container">
+                    <button id="show-login" class="btn btn-primary">Iniciar Sesión</button>
+                    <button id="show-register" class="btn btn-secondary">Registrarser</button>
+                    <button id="google-login" class="btn btn-danger">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button id="facebook-login" class="btn btn-primary">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                </div>
+
+                <!-- Formulario de Login (Oculto por defecto) -->
+                <div id="login-form" class="auth-form" style="display: none;">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="email" id="login-email" placeholder="Correo electrónico" required>
+                    <input type="password" id="login-password" placeholder="Contraseña" required>
+                    <button id="login-button" class="btn btn-success">Entrar</button>
+                    <button id="close-login" class="btn btn-danger">Cerrar</button>
+                </div>
+
+                <!--  (Oculto por defecto) -->
+                <div id="register-form" class="auth-form" style="display: none;">
+                    <h2>Registro</h2>
+                    <input type="text" id="register-name" placeholder="Nombre completo" required>
+                    <input type="date" id="register-birthdate" required>
+                    <input type="email" id="register-email" placeholder="Correo electrónico" required>
+                    <input type="password" id="register-password" placeholder="Contraseña" required>
+                    <input type="text" id="register-country" placeholder="País" required>
+                    <input type="text" id="register-city" placeholder="Ciudad" required>
+                    <input type="tel" id="register-phone" placeholder="Teléfono" required>
+                    <button id="register-button" class="btn btn-success">Registrarse</button>
+                    <button id="close-register" class="btn btn-danger">Cerrar</button>
+                </div>                    
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
+            <a class="btn btn-dark m-3" href="https://x.com/Alafarpe" target="_blank"><i
+                    class="fab fa-twitter"></i></a>
+            <a class="btn btn-dark m-3" href="https://www.facebook.com/Alafarpe" target="_blank"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-dark m-3" href="https://www.instagram.com/alafarpe/" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        //Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCXKBjtafxKl_05BtgET-_KjPA_tKYi4_M",
+            authDomain: "proyecto-2b17b.firebaseapp.com",
+            projectId: "proyecto-2b17b",
+            storageBucket: "proyecto-2b17b.appspot.com",
+            messagingSenderId: "828867582645",
+            appId: "1:828867582645:web:be76a6644ac3ef0a44bcfc"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+        const facebookProvider = new FacebookAuthProvider();
+
+        window.firebaseAuth = { 
+            auth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword, 
+            signInWithPopup, 
+            GoogleAuthProvider, 
+            FacebookAuthProvider, 
+            signOut
+        };
+    </script>
+
+    <!-- Bootstrap y Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js" defer></script>
+
+</body>
+</html>
